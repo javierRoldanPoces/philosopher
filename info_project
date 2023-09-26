@@ -1,0 +1,96 @@
+/*
+FUNCIONES PERMITIDAS:
+
+memset: Esta función se utiliza para llenar un bloque de memoria con un valor específico. Es comúnmente usada para 
+inicializar matrices o estructuras de datos con un valor particular.
+
+printf: Es una función de la biblioteca estándar de C que se utiliza para imprimir texto formateado en la consola.
+ Permite la impresión de datos en diferentes formatos, como cadenas de caracteres, números, etc.
+
+malloc: Se utiliza para asignar dinámicamente un bloque de memoria en el heap (memoria disponible para el programa)
+ durante la ejecución del programa. Es comúnmente utilizado para la asignación de memoria para estructuras de datos, 
+ como matrices y listas enlazadas.
+
+free: Esta función se usa para liberar la memoria previamente asignada dinámicamente con malloc. 
+Ayuda a evitar fugas de memoria liberando el espacio ocupado por objetos que ya no son necesarios.
+
+write: Se utiliza para escribir datos en un descriptor de archivo, que puede ser un archivo en disco,
+ un socket o cualquier otro recurso de archivo. Es una forma de salida de datos en C.
+
+usleep: Pausa la ejecución de un programa durante una cantidad especificada de microsegundos.
+Se utiliza comúnmente para introducir retrasos en programas.
+
+gettimeofday: Obtiene la hora actual y la fecha en microsegundos desde una referencia fija.
+Se utiliza para medir el tiempo transcurrido o para realizar temporizaciones precisas.
+
+pthread_create: Se utiliza en programas multihilo para crear un nuevo hilo de ejecución.
+Permite que un programa realice múltiples tareas de manera concurrente.
+
+pthread_detach: Esta función se utiliza para marcar un hilo como desvinculado, lo que significa que, una vez que 
+el hilo termina su ejecución, su recurso puede ser liberado automáticamente sin necesidad de ser unido explícitamente.
+
+pthread_join: Se utiliza para esperar a que un hilo termine su ejecución antes de que el hilo principal continúe.
+Permite la sincronización entre hilos.
+
+pthread_mutex_init: Inicializa un objeto de bloqueo (mutex) que se utiliza para proporcionar exclusión mutua en hilos.
+Los mutex garantizan que solo un hilo pueda acceder a una sección crítica del código a la vez.
+
+pthread_mutex_destroy: Libera los recursos asociados con un mutex después de que ya no se necesita.
+Debe usarse para evitar fugas de recursos.
+
+pthread_mutex_lock: Bloquea un mutex, lo que significa que otros hilos que intenten adquirir el mismo mutex esperarán
+hasta que se libere.
+
+pthread_mutex_unlock: Desbloquea un mutex, permitiendo que otros hilos lo adquieran si están en espera.
+
+*/
+
+/*
+    Logs del programa
+
+• Cualquier cambio de estado de un filósofo debe tener el siguiente formato:
+
+◦ timestamp_in_ms X has taken a fork
+◦ timestamp_in_ms X is eating
+◦ timestamp_in_ms X is sleeping
+◦ timestamp_in_ms X is thinking
+◦ timestamp_in_ms X died
+
+Reemplaza timestamp_in_ms con la marca de tiempo actual en milisegundos
+y X con el numero del filósofo
+
+*/
+
+/*
+ NOTAS:
+
+ • No puedes tener más de 10ms entre la muerte de un filósofo y el momento en el que
+imprimes su muerte.
+
+
+*/
+
+/*
+    ARGUMENTOS
+
+number_of_philosophers time_to_die time_to_eat time_to_sleep
+
+[number_of_times_each_philosopher_must_eat]
+◦ number_of_philosophers: es el número de filósofos, pero también el número
+de tenedores.
+
+◦ time_to_die (en milisegundos): si un filósofo no empieza a comer en time_to_die
+milisegundos desde el comienzo de su ultima comida o desde el principio de la
+simulación, este morirá.
+
+◦ time_to_eat (en milisegundos): es el tiempo que tiene un filósofo para comer.
+Durante ese tiempo, tendrá los tenedores ocupados.
+
+◦ time_to_sleep (en milisegundos): es el tiempo que tiene un filósofo para
+dormir.
+
+◦ number_of_times_each_philosopher_must_eat (argumento opcional): si todos los filósofos comen al menos number_of_times_each_philosopher_must_eat
+veces, la simulación se detendrá. Si no se especifica, la simulación se detendrá
+con la muerte de un filósofo.
+
+*/
