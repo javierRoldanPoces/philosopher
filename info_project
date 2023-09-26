@@ -64,9 +64,27 @@ y X con el numero del filósofo
 /*
  NOTAS:
 
- • No puedes tener más de 10ms entre la muerte de un filósofo y el momento en el que
+- No puedes tener más de 10ms entre la muerte de un filósofo y el momento en el que
 imprimes su muerte.
 
+- timestamp_in_ms generalmente se refiere a un valor de tiempo expresado en milisegundos -> 1 milisegundo = 1/1000 de segundo
+desde un punto de referencia fijo en el pasado, similar a lo que se hace con el tipo de dato time_t.
+Un timestamp en milisegundos es comúnmente utilizado para representar momentos específicos en el tiempo con 
+mayor precisión que un timestamp en segundos.
+
+Para trabajar con timestamps en milisegundos en C, puedes usar el tipo de dato long long int o int64_t para 
+asegurarte de que tengas suficiente capacidad de almacenamiento para valores de tiempo grandes. 
+
+- time_t es un tipo de dato que se utiliza para representar valores de tiempo. Es un tipo integral, 
+generalmente implementado como un entero de 32 o 64 bits, dependiendo de la plataforma y el compilador. 
+El propósito principal de time_t es almacenar marcas de tiempo, que representan momentos específicos en 
+el tiempo, generalmente en segundos desde un punto de referencia fijo en el pasado
+ 
+- Función de tiempo relacionada gettimeofday: Obtiene la hora actual y la fecha en microsegundos desde una referencia fija.
+ Se utiliza para medir el tiempo transcurrido o para realizar temporizaciones precisas.
+
+- Milisegundos = Microsegundos / 1000
+ 
 
 */
 
