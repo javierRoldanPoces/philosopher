@@ -17,11 +17,15 @@ Ayuda a evitar fugas de memoria liberando el espacio ocupado por objetos que ya 
 write: Se utiliza para escribir datos en un descriptor de archivo, que puede ser un archivo en disco,
  un socket o cualquier otro recurso de archivo. Es una forma de salida de datos en C.
 
+time
+
 usleep: Pausa la ejecución de un programa durante una cantidad especificada de microsegundos.
 Se utiliza comúnmente para introducir retrasos en programas.
 
 gettimeofday: Obtiene la hora actual y la fecha en microsegundos desde una referencia fija.
 Se utiliza para medir el tiempo transcurrido o para realizar temporizaciones precisas.
+
+pthread_t
 
 pthread_create: Se utiliza en programas multihilo para crear un nuevo hilo de ejecución.
 Permite que un programa realice múltiples tareas de manera concurrente.
@@ -32,12 +36,14 @@ el hilo termina su ejecución, su recurso puede ser liberado automáticamente si
 pthread_join: Se utiliza para esperar a que un hilo termine su ejecución antes de que el hilo principal continúe.
 Permite la sincronización entre hilos.
 
+MUTEX
+
 pthread_mutex_init: Inicializa un objeto de bloqueo (mutex) que se utiliza para proporcionar exclusión mutua en hilos.
 Los mutex garantizan que solo un hilo pueda acceder a una sección crítica del código a la vez.
 
 pthread_mutex_destroy: Libera los recursos asociados con un mutex después de que ya no se necesita.
 Debe usarse para evitar fugas de recursos.
-
+-----
 pthread_mutex_lock: Bloquea un mutex, lo que significa que otros hilos que intenten adquirir el mismo mutex esperarán
 hasta que se libere.
 
