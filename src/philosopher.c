@@ -6,7 +6,7 @@
 /*   By: javi <javi@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 17:07:19 by javi              #+#    #+#             */
-/*   Updated: 2023/09/27 18:53:08 by javi             ###   ########.fr       */
+/*   Updated: 2023/09/28 17:53:08 by javi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int	main(int argc, char **argv)
 		return (printf("error: Número de argumentos inválido.\n"), 1);
 	project = init_project(argc, argv);
 	project->philo = init_philo(project);
-	print_project(project);
+	thread_create(project);
+	//print_project(project);
 	return (0);
 }

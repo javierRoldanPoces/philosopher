@@ -65,6 +65,8 @@ pthread_mutex_unlock: Desbloquea un mutex, permitiendo que otros hilos lo adquie
 Reemplaza timestamp_in_ms con la marca de tiempo actual en milisegundos
 y X con el numero del filósofo
 
+- Milisegundos = Microsegundos / 1000
+
 */
 
 /*
