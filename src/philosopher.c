@@ -6,7 +6,7 @@
 /*   By: javi <javi@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 17:07:19 by javi              #+#    #+#             */
-/*   Updated: 2023/09/28 17:53:08 by javi             ###   ########.fr       */
+/*   Updated: 2023/09/30 20:22:21 by javi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,15 @@ int	main(int argc, char **argv)
 {
 	t_project		*project;
 
-	if (argc < 5)
+	if (argc < 5 || argc > 6)
 		return (printf("error: Número de argumentos inválido.\n"), 1);
+
 	project = init_project(argc, argv);
+	// if (project->number_of_foods == 0)
+	// 	return (1);
 	project->philo = init_philo(project);
 	thread_create(project);
 	//print_project(project);
+	//Crear funcione spara liberar recursos
 	return (0);
 }

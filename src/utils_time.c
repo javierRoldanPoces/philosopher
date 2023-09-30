@@ -6,7 +6,7 @@
 /*   By: javi <javi@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 17:35:55 by javi              #+#    #+#             */
-/*   Updated: 2023/09/30 14:17:51 by javi             ###   ########.fr       */
+/*   Updated: 2023/09/30 19:14:51 by javi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ time_t	get_time(void)
 	struct timeval	time;
 
 	gettimeofday(&time, NULL);
-	return (time.tv_sec * 1000000 + time.tv_usec / 1000);
+	return (time.tv_sec * 1000 + time.tv_usec / 1000);
 }
 
 /*
@@ -33,7 +33,7 @@ void	sleep_time(time_t tm, t_project *project)
 	time_t	start;
 
 	start = get_time();
-	while (get_time() - start < tm &&  !checker_finish(project))
+	while (get_time() - start < tm && !checker_finish(project))
 		usleep(1000);
 }
 

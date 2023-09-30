@@ -6,7 +6,7 @@
 /*   By: javi <javi@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 11:12:17 by javi              #+#    #+#             */
-/*   Updated: 2023/09/30 14:10:15 by javi             ###   ########.fr       */
+/*   Updated: 2023/09/30 20:28:35 by javi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,21 @@
 void	*ft_routine_checker(void *arg)
 {
 	t_project	*project;
-	int				i;
+	int			i;
 
 	project = (t_project *)arg;
 	while (!checker_finish(project))
 	{
 		i = 0;
-		while (i < project->nbr_philo) // LA Movida debe estar x aquí
+		while (i < project->nbr_philo)
 		{
-			if (check_dead(&project->philo[i]) == 1)
+			if (check_dead(&project->philo[i]))
 			{
-				pthread_mutex_lock(&project->mute_end_lock);
-				project->flag_dead = 1;
-				pthread_mutex_unlock(&project->mute_end_lock);
+				// pthread_mutex_lock(&project->mute_end_lock);
+				// project->flag_dead = 1;
+				// pthread_mutex_unlock(&project->mute_end_lock);
+				printf("philo %d DEAD\n", project->philo[i].id);
+				printf("philo %d last_meal %ld tardo : %ld\n", project->philo[i].id, project->philo[i].last_food, get_time() - project->philo[i].last_food);
 				return (NULL);
 			}
 			else if (check_food(project))
@@ -45,7 +47,7 @@ void	*ft_routine_prueba(void *arg)
 	philo = (t_philosopher *)arg;
 	if (philo->id % 2 == 0)
 	{
-		while (checker_finish(philo->project) == 0)
+		while (!checker_finish(philo->project))
 		{
 			ft_sleep(philo);
 			ft_think(philo);
@@ -55,7 +57,7 @@ void	*ft_routine_prueba(void *arg)
 	}
 	else
 	{
-		while (checker_finish(philo->project) ==0)
+		while (!checker_finish(philo->project))
 		{
 			ft_take_forks(philo);
 			ft_eat(philo);

@@ -120,3 +120,19 @@ veces, la simulación se detendrá. Si no se especifica, la simulación se deten
 con la muerte de un filósofo.
 
 */
+
+/*
+ Falta por controlar:
+    
+    - Liberacion de recursos al salir del programa || muerte de un filos || parametros incorrectos
+
+    - controlar numero de comidad tambien en el caso de que sea 1 debe morir pq no puede comer       
+      solo tiene un tenedor
+
+	- Controlar los data races
+
+	. Funcion con macros para prinear acciones
+
+	- Funcion de manejo de errores
+
+*/

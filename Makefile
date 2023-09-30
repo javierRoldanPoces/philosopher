@@ -6,11 +6,11 @@
 #    By: javi <javi@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/26 17:06:26 by javi              #+#    #+#              #
-#    Updated: 2023/09/30 12:06:05 by javi             ###   ########.fr        #
+#    Updated: 2023/09/30 19:15:04 by javi             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = philosopher
+NAME = philo
 
 SRC =	./src/philosopher.c		\
 		./src/utils.c			\
@@ -22,9 +22,9 @@ SRC =	./src/philosopher.c		\
 
 OBJT = $(SRC:.c=.o)
 
-CC = gcc
+CC = gcc 
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -pthread #-fsanitize=thread
 
 RM = rm -f
 

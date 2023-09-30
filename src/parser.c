@@ -6,7 +6,7 @@
 /*   By: javi <javi@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 20:14:08 by javi              #+#    #+#             */
-/*   Updated: 2023/09/30 13:55:02 by javi             ###   ########.fr       */
+/*   Updated: 2023/09/30 20:33:41 by javi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_project	*init_project(int argc, char **argv)
 	if (argc > 5)
 		project->number_of_foods = (int)ft_atoi(argv[5]);
 	else
-		project->number_of_foods = 0;
+		project->number_of_foods = -1;
 	project->flag_dead = 0;
 	project->start = get_time();
 	if (project->nbr_philo < 1 || project->time_to_die < 1
