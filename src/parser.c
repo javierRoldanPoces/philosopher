@@ -6,7 +6,7 @@
 /*   By: javi <javi@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 20:14:08 by javi              #+#    #+#             */
-/*   Updated: 2023/09/29 13:29:30 by javi             ###   ########.fr       */
+/*   Updated: 2023/09/30 13:55:02 by javi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ t_project	*init_project(int argc, char **argv)
 	else
 		project->number_of_foods = 0;
 	project->flag_dead = 0;
-	project->flag_end = 0;
 	project->start = get_time();
 	if (project->nbr_philo < 1 || project->time_to_die < 1
 		|| project->time_to_eat < 1 || project->time_to_sleep < 1)
@@ -50,37 +49,21 @@ t_philosopher	*init_philo(t_project *project)
 		philo[i].id = i + 1;
 		philo[i].flag_terminate = 0;
 		philo[i].count_foods = 0;
-		philo[i].has_forks = 0;
-		philo[i].nbr_foods = 0;
-		philo[i].fork = &philo[(i + 1) % project->nbr_philo].fork_left;
-		pthread_mutex_init(&philo[i].fork_left, NULL);
 		philo[i].last_food = get_time();
+		pthread_mutex_init(&philo[i].fork_left, NULL);
+		philo[i].fork = &philo[(i + 1) % project->nbr_philo].fork_left;
 		philo[i].project = project;
+		pthread_mutex_init(&philo[i].mute_lock, NULL);
 	}
 	pthread_mutex_init(&project->mute_end_lock, 0);
 	pthread_mutex_init(&project->mute_lock, 0);
 	return (philo);
 }
 
-// void	*ft_routine_prueba(void *arg)
-// {
-// 	t_philosopher	*philo;
-
-// 	philo = ((t_philosopher *)arg);
-// 	if (philo == NULL)
-// 		printf ("Hilos no guardados\n");
-// 	else
-// 	{
-// 		printf("Hilo creado correctamente: Soy el hilo %d\n", philo->id);
-// 		printf("Ultima comida  %ld ms\n", philo->last_food);
-
-// 	}
-// 	return (NULL);
-// }
-
 int	thread_create(t_project *project)
 {
 	int			i;
+	pthread_t	checker;
 
 	i = -1;
 	project->thread = (pthread_t *)malloc(sizeof(pthread_t) * project->nbr_philo);
@@ -90,7 +73,10 @@ int	thread_create(t_project *project)
 	{
 		if (pthread_create(&project->thread[i], NULL, ft_routine_prueba, &project->philo[i]) != 0)
 			return (1);
-		pthread_join(project->thread[i], NULL); // tendrian q esperar q acabe el Hilo ?¿ DUDA
+		//pthread_join(project->thread[i], NULL); // tendrian q esperar q acabe el Hilo ?¿ DUDA
 	}
+	if (pthread_create(&checker, NULL, ft_routine_checker, (void *)project) != 0)
+		return (1);
+	pthread_join(checker, NULL);
 	return (0);
 }

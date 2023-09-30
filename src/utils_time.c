@@ -6,7 +6,7 @@
 /*   By: javi <javi@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 17:35:55 by javi              #+#    #+#             */
-/*   Updated: 2023/09/29 13:15:44 by javi             ###   ########.fr       */
+/*   Updated: 2023/09/30 14:17:51 by javi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,12 @@ time_t	get_time(void)
 /*
 Funcion para esperar que acaben las ditintas acciones 
 */
-void	sleep_time(time_t tm, t_philosopher *philo)
+void	sleep_time(time_t tm, t_project *project)
 {
 	time_t	start;
 
 	start = get_time();
-	while (get_time() - start < tm && !philo->project->flag_end)
+	while (get_time() - start < tm &&  !checker_finish(project))
 		usleep(1000);
 }
 
