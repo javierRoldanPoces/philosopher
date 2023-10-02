@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: javi <javi@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: javier <javier@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 20:14:08 by javi              #+#    #+#             */
-/*   Updated: 2023/09/30 20:33:41 by javi             ###   ########.fr       */
+/*   Updated: 2023/10/02 11:02:09 by javier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ t_project	*init_project(int argc, char **argv)
 	if (project->nbr_philo < 1 || project->time_to_die < 1
 		|| project->time_to_eat < 1 || project->time_to_sleep < 1)
 		return (NULL);
+	pthread_mutex_init(&project->mute_end_lock, NULL);
+	pthread_mutex_init(&project->mute_lock, NULL);
 	return (project);
 }
 
@@ -55,8 +57,8 @@ t_philosopher	*init_philo(t_project *project)
 		philo[i].project = project;
 		pthread_mutex_init(&philo[i].mute_lock, NULL);
 	}
-	pthread_mutex_init(&project->mute_end_lock, 0);
-	pthread_mutex_init(&project->mute_lock, 0);
+	// pthread_mutex_init(&project->mute_end_lock, 0);
+	// pthread_mutex_init(&project->mute_lock, 0);
 	return (philo);
 }
 
@@ -73,7 +75,6 @@ int	thread_create(t_project *project)
 	{
 		if (pthread_create(&project->thread[i], NULL, ft_routine_prueba, &project->philo[i]) != 0)
 			return (1);
-		//pthread_join(project->thread[i], NULL); // tendrian q esperar q acabe el Hilo ?¿ DUDA
 	}
 	if (pthread_create(&checker, NULL, ft_routine_checker, (void *)project) != 0)
 		return (1);
