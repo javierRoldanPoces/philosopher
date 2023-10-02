@@ -6,7 +6,7 @@
 #    By: javier <javier@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/26 17:06:26 by javi              #+#    #+#              #
-#    Updated: 2023/10/02 11:00:21 by javier           ###   ########.fr        #
+#    Updated: 2023/10/02 11:19:21 by javier           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ OBJT = $(SRC:.c=.o)
 
 CC = gcc 
 
-CFLAGS = -Wall -Wextra -Werror -pthread -fsanitize=thread
+CFLAGS = -Wall -Wextra -Werror -pthread #-fsanitize=thread
 
 RM = rm -f
 

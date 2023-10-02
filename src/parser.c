@@ -6,7 +6,7 @@
 /*   By: javier <javier@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 20:14:08 by javi              #+#    #+#             */
-/*   Updated: 2023/10/02 11:02:09 by javier           ###   ########.fr       */
+/*   Updated: 2023/10/02 11:22:51 by javier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_project	*init_project(int argc, char **argv)
 	if (project == NULL)
 		return (NULL);
 	project->nbr_philo = (int)ft_atoi(argv[1]);
-	project->time_to_die = ft_atoi(argv[2]);
+	(project->time_to_die = ft_atoi(argv[2]));
 	project->time_to_eat = ft_atoi(argv[3]);
 	project->time_to_sleep = ft_atoi(argv [4]);
 	if (argc > 5)

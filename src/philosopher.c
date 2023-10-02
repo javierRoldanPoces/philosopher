@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philosopher.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: javi <javi@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: javier <javier@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 17:07:19 by javi              #+#    #+#             */
-/*   Updated: 2023/09/30 20:22:21 by javi             ###   ########.fr       */
+/*   Updated: 2023/10/02 11:23:29 by javier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ int	main(int argc, char **argv)
 		return (printf("error: Número de argumentos inválido.\n"), 1);
 
 	project = init_project(argc, argv);
+	if (project == NULL)
+		return (1);
 	// if (project->number_of_foods == 0)
 	// 	return (1);
 	project->philo = init_philo(project);
