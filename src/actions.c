@@ -6,7 +6,7 @@
 /*   By: javier <javier@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 11:53:07 by javi              #+#    #+#             */
-/*   Updated: 2023/10/02 19:25:28 by javier           ###   ########.fr       */
+/*   Updated: 2023/10/02 21:34:17 by javier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ void	ft_eat(t_philosopher *philo)
 	philo->count_foods++;
 	printf("philo %d count_foods %d\n", philo->id, philo->count_foods);
 	philo->last_food = get_time();
-	pthread_mutex_unlock(&philo->mute_lock);
 	sleep_time(philo->project->time_to_eat, philo->project);
+	pthread_mutex_unlock(&philo->mute_lock);
 	pthread_mutex_unlock(&philo->fork_left);
 	pthread_mutex_unlock(philo->fork);
 }

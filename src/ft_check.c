@@ -6,7 +6,7 @@
 /*   By: javier <javier@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 12:17:08 by javi              #+#    #+#             */
-/*   Updated: 2023/10/02 19:19:37 by javier           ###   ########.fr       */
+/*   Updated: 2023/10/02 21:29:03 by javier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,7 @@ int	check_dead(t_philosopher *philo)
 	status = 0;
 	pthread_mutex_lock(&philo->mute_lock);
 	if (get_time() - philo->last_food > philo->project->time_to_die)
-	{
-				status = 1;
-	}
+		status = 1;
 	pthread_mutex_unlock(&philo->mute_lock);
 	if (status == 1)
 	{

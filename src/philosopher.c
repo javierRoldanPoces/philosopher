@@ -6,7 +6,7 @@
 /*   By: javier <javier@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 17:07:19 by javi              #+#    #+#             */
-/*   Updated: 2023/10/02 21:17:04 by javier           ###   ########.fr       */
+/*   Updated: 2023/10/02 21:31:19 by javier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,15 @@ void	print_project(t_project *project)
 	print_philo(project->philo, project->nbr_philo);
 }
 
-void	leaks(void)
-{
-	system("leaks -q philo");
-}
+// void	leaks(void)
+// {
+// 	system("leaks -q philo");
+// }
 int	main(int argc, char **argv)
 {
 	t_project		*project;
 
-	atexit(leaks);
+	//atexit(leaks);
 	if (parse_arg(argc, argv) == 1)
 		return (printf("philosopher: Invalid Arguments\n"), 1);
 	project = init_project(argc, argv);

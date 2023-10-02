@@ -6,7 +6,7 @@
 /*   By: javier <javier@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 20:14:08 by javi              #+#    #+#             */
-/*   Updated: 2023/10/02 21:06:54 by javier           ###   ########.fr       */
+/*   Updated: 2023/10/02 21:34:54 by javier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,11 +121,9 @@ int	thread_create(t_project *project)
 			&project->philo[i]) != 0)
 			return (1);
 	}
-	//checker = (pthread_t)malloc(sizeof(pthread_t));
 	if (pthread_create(&checker, NULL, ft_routine_checker, \
 		(void *)project) != 0)
 		return (1);
 	pthread_join(checker, NULL);
-	//free(&checker);
 	return (0);
 }
