@@ -6,19 +6,20 @@
 #    By: javier <javier@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/26 17:06:26 by javi              #+#    #+#              #
-#    Updated: 2023/10/02 11:19:21 by javier           ###   ########.fr        #
+#    Updated: 2023/10/02 20:44:03 by javier           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = philo
 
-SRC =	./src/philosopher.c		\
-		./src/utils.c			\
-		./src/parser.c			\
-		./src/utils_time.c		\
-		./src/routines.c		\
-		./src/actions.c			\
-		./src/ft_check.c		\
+SRC =	./src/philosopher.c			\
+		./src/utils.c				\
+		./src/parser.c				\
+		./src/utils_time.c			\
+		./src/routines.c			\
+		./src/actions.c				\
+		./src/ft_check.c			\
+		./src/philosopher_exit.c 	\
 
 OBJT = $(SRC:.c=.o)
 

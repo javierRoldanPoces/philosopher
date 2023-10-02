@@ -6,7 +6,7 @@
 /*   By: javier <javier@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 12:17:08 by javi              #+#    #+#             */
-/*   Updated: 2023/10/02 10:48:51 by javier           ###   ########.fr       */
+/*   Updated: 2023/10/02 19:19:37 by javier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	check_food(t_project *project)
 	i = -1;
 	status = 1;
 	if (project->number_of_foods == -1)
-		return (0);	
+		return (0);
 	while (++i < project->nbr_philo)
 	{
 		pthread_mutex_lock(&project->philo[i].mute_lock);

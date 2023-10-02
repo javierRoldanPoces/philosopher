@@ -6,7 +6,7 @@
 /*   By: javier <javier@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 11:12:17 by javi              #+#    #+#             */
-/*   Updated: 2023/10/02 10:55:32 by javier           ###   ########.fr       */
+/*   Updated: 2023/10/02 19:23:14 by javier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,10 @@ void	*ft_routine_checker(void *arg)
 		{
 			if (check_dead(&project->philo[i]))
 			{
-				 pthread_mutex_lock(&project->mute_end_lock);
-				// project->flag_dead = 1;
+				pthread_mutex_lock(&project->mute_end_lock);
 				printf("philo %d DEAD\n", project->philo[i].id);
 				printf("philo %d last_meal %ld tardo : %ld\n", project->philo[i].id, project->philo[i].last_food, get_time() - project->philo[i].last_food);
 				pthread_mutex_unlock(&project->mute_end_lock);
-
 				return (NULL);
 			}
 			else if (check_food(project))
@@ -53,7 +51,7 @@ void	*ft_routine_prueba(void *arg)
 			ft_sleep(philo);
 			ft_think(philo);
 			ft_take_forks(philo);
-			ft_eat(philo);//data race
+			ft_eat(philo);
 		}
 	}
 	else

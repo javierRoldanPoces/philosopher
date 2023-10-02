@@ -99,6 +99,8 @@ el tiempo, generalmente en segundos desde un punto de referencia fijo en el pasa
 /*
     ARGUMENTOS
 
+No es necesario "liberar" los hilos como se libera la memoria dinámica con free. En su lugar, puedes usar pthread_exit para terminar hilos de manera explícita o simplemente dejar que el programa principal termine, lo que detendrá automáticamente todos los hilos creados por ese programa. usamos pthread_join para que el programa espere que acaben los hilos antes de terminar.
+
 number_of_philosophers time_to_die time_to_eat time_to_sleep
 
 [number_of_times_each_philosopher_must_eat]
@@ -134,5 +136,7 @@ con la muerte de un filósofo.
 	. Funcion con macros para prinear acciones
 
 	- Funcion de manejo de errores
+
+    Maximo valor de un int 2147483647
 
 */

@@ -6,7 +6,7 @@
 /*   By: javier <javier@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 17:07:19 by javi              #+#    #+#             */
-/*   Updated: 2023/10/02 11:23:29 by javier           ###   ########.fr       */
+/*   Updated: 2023/10/02 21:17:04 by javier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,21 +35,34 @@ void	print_project(t_project *project)
 	print_philo(project->philo, project->nbr_philo);
 }
 
+void	leaks(void)
+{
+	system("leaks -q philo");
+}
 int	main(int argc, char **argv)
 {
 	t_project		*project;
 
-	if (argc < 5 || argc > 6)
-		return (printf("error: Número de argumentos inválido.\n"), 1);
-
+	atexit(leaks);
+	if (parse_arg(argc, argv) == 1)
+		return (printf("philosopher: Invalid Arguments\n"), 1);
 	project = init_project(argc, argv);
 	if (project == NULL)
+	{
+		printf("Philosopher: Invalid Argument\n");
 		return (1);
-	// if (project->number_of_foods == 0)
-	// 	return (1);
+	}	
 	project->philo = init_philo(project);
-	thread_create(project);
-	//print_project(project);
-	//Crear funcione spara liberar recursos
+	if (thread_create(project) == 1)
+	{
+		printf("Philosopher: error creating thread\n");
+		return (1);
+	}
+	join_threads(project);
+	destroy_mutex(project);
+	free_project(project);
+	// free(project->philo);
+	// free(project->thread);
+	// free(project);
 	return (0);
 }

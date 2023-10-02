@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: javi <javi@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: javier <javier@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 18:45:51 by javi              #+#    #+#             */
-/*   Updated: 2023/09/27 18:54:38 by javi             ###   ########.fr       */
+/*   Updated: 2023/10/02 18:35:20 by javier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 long	ft_atoi(const char *str)
 {
-	long	sign;
-	long	result;
-	int		i;
+	int	sign;
+	int	result;
+	int	i;
 
 	sign = 1;
 	result = 0;
@@ -37,4 +37,33 @@ long	ft_atoi(const char *str)
 		i++;
 	}
 	return (result * sign);
+}
+
+long	ft_atoi_long(const char *str)
+{
+	long	i;
+	long	res;
+	long	sig;
+
+	i = 0;
+	res = 0;
+	sig = 1;
+	if (str[i] == '-')
+		sig *= -1;
+	if (str[i] == '+' || str[i] == '-')
+		i++;
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		res = res * 10 + str[i] - '0';
+		i++;
+	}
+	return (res * sig);
+}
+
+int	ft_range_int(long a, long b)
+{
+	if (a == b)
+		return (a);
+	else
+		return (-2);
 }

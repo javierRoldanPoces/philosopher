@@ -20,7 +20,7 @@ test-  expected result
 
 ./philo 4 410 200 200 nobody dies
 
- one philo dies
+ ./philo 4 310 200 200 one philo dies
 
 ./philo 4 500 200 1.2 invalid argument
 

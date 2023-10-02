@@ -6,7 +6,7 @@
 /*   By: javier <javier@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 11:53:07 by javi              #+#    #+#             */
-/*   Updated: 2023/10/02 10:53:40 by javier           ###   ########.fr       */
+/*   Updated: 2023/10/02 19:25:28 by javier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@ void	ft_take_forks(t_philosopher *philo)
 	pthread_mutex_lock(&philo->fork_left);
 	printf("%ld %d has taken a fork\n", (long)timestamp(philo->project), philo->id);
 	pthread_mutex_lock(philo->fork);
-	printf("%ld %d has taken a fork left\n",(long)timestamp(philo->project), philo->id);
+	printf("%ld %d has taken a fork left\n", (long)timestamp(philo->project), philo->id);
 }
 
 void	ft_eat(t_philosopher *philo)
 {
-	printf("%ld %d is eat\n",(long)timestamp(philo->project), philo->id);
+	printf("%ld %d is eat\n", (long)timestamp(philo->project), philo->id);
 	pthread_mutex_lock(&philo->mute_lock);
 	philo->count_foods++;
 	printf("philo %d count_foods %d\n", philo->id, philo->count_foods);

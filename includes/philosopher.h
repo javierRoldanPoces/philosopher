@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philosopher.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: javi <javi@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: javier <javier@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 17:41:21 by javi              #+#    #+#             */
-/*   Updated: 2023/09/30 14:18:07 by javi             ###   ########.fr       */
+/*   Updated: 2023/10/02 21:16:43 by javier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,11 @@ typedef struct s_project
 
 //src/utils.c
 long			ft_atoi(const char *str);
+long			ft_atoi_long(const char *str);
+int				ft_range_int(long a, long b);
 
 //src/parser.c
+int				parse_arg(int argc, char **argv);
 t_project		*init_project(int argc, char **argv);
 t_philosopher	*init_philo(t_project *project);
 int				thread_create(t_project *project);
@@ -76,5 +79,10 @@ void			ft_eat(t_philosopher *philo);
 void			ft_sleep(t_philosopher *philo);
 void			ft_think(t_philosopher *philo);
 
+//src/philosopher_exit.c
+
+void			join_threads(t_project *project);
+void			destroy_mutex(t_project *project);
+void			free_project(t_project *project);
 
 #endif
