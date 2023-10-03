@@ -6,7 +6,7 @@
 /*   By: javier <javier@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 11:12:17 by javi              #+#    #+#             */
-/*   Updated: 2023/10/03 13:04:33 by javier           ###   ########.fr       */
+/*   Updated: 2023/10/03 13:07:57 by javier           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	*ft_routine_checker(void *arg)
 			{
 				pthread_mutex_lock(&project->mute_end_lock);
 				printf("philo %d DEAD\n", project->philo[i].id);
-				//printf("philo %d last_meal %ld tardo : %ld\n", project->philo[i].id, project->philo[i].last_food, get_time() - project->philo[i].last_food); AQUI ETABA EL DATA RACES
+				//printf("philo %d last_meal %ld tardo : %ld\n", project->philo[i].id, project->philo[i].last_food, get_time() - project->philo[i].last_food); AQUI ESTABA EL DATA RACES
 				pthread_mutex_unlock(&project->mute_end_lock);
 				return (NULL);
 			}
