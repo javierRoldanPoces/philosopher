@@ -6,7 +6,7 @@
 /*   By: javi <javi@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 11:53:07 by javi              #+#    #+#             */
-/*   Updated: 2023/10/03 19:17:16 by javi             ###   ########.fr       */
+/*   Updated: 2023/10/03 19:19:22 by javi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	ft_take_forks(t_philosopher *philo)
 {
-
 	pthread_mutex_lock(&philo->fork_left);
 	printf("%ld ms %d has taken a fork\n", \
 	(long)timestamp(philo->project), philo->id);
