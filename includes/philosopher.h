@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philosopher.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: javier <javier@student.42.fr>              +#+  +:+       +#+        */
+/*   By: javi <javi@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 17:41:21 by javi              #+#    #+#             */
-/*   Updated: 2023/10/02 21:16:43 by javier           ###   ########.fr       */
+/*   Updated: 2023/10/03 18:30:51 by javi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ typedef struct s_project
 }	t_project;
 
 //src/utils.c
+int				ft_isdigit(int c);
 long			ft_atoi(const char *str);
 long			ft_atoi_long(const char *str);
 int				ft_range_int(long a, long b);
@@ -57,6 +58,8 @@ int				ft_range_int(long a, long b);
 int				parse_arg(int argc, char **argv);
 t_project		*init_project(int argc, char **argv);
 t_philosopher	*init_philo(t_project *project);
+
+//src/thread.c
 int				thread_create(t_project *project);
 
 //src/utils_time.c
@@ -64,7 +67,7 @@ time_t			get_time(void);
 void			sleep_time(time_t tm, t_project *project);
 time_t			timestamp(t_project *project);
 
-//src/rourines.c
+//src/routines.c
 void			*ft_routine_prueba(void *arg);
 void			*ft_routine_checker(void *arg);
 

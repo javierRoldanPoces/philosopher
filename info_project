@@ -62,6 +62,8 @@ pthread_mutex_unlock: Desbloquea un mutex, permitiendo que otros hilos lo adquie
 ◦ timestamp_in_ms X is thinking
 ◦ timestamp_in_ms X died
 
+Texto en rojo printf("\033[31mTexto en rojo\n")
+
 Reemplaza timestamp_in_ms con la marca de tiempo actual en milisegundos
 y X con el numero del filósofo
 

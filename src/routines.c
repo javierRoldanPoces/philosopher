@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   routines.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: javier <javier@student.42.fr>              +#+  +:+       +#+        */
+/*   By: javi <javi@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 11:12:17 by javi              #+#    #+#             */
-/*   Updated: 2023/10/03 13:07:57 by javier           ###   ########.fr       */
+/*   Updated: 2023/10/03 18:24:38 by javi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ void	*ft_routine_checker(void *arg)
 			if (check_dead(&project->philo[i]))
 			{
 				pthread_mutex_lock(&project->mute_end_lock);
-				printf("philo %d DEAD\n", project->philo[i].id);
-				//printf("philo %d last_meal %ld tardo : %ld\n", project->philo[i].id, project->philo[i].last_food, get_time() - project->philo[i].last_food); AQUI ESTABA EL DATA RACES
+				printf("%ld %d \033[31mdead \033[0m \n", (long)timestamp(project), \
+				project->philo[i].id);
 				pthread_mutex_unlock(&project->mute_end_lock);
 				return (NULL);
 			}

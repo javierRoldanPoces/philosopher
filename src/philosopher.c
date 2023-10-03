@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philosopher.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: javier <javier@student.42.fr>              +#+  +:+       +#+        */
+/*   By: javi <javi@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 17:07:19 by javi              #+#    #+#             */
-/*   Updated: 2023/10/03 12:31:20 by javier           ###   ########.fr       */
+/*   Updated: 2023/10/03 18:24:25 by javi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,11 @@ void	print_project(t_project *project)
 // {
 // 	system("leaks -q philo");
 // }
+//atexit(leaks);
 int	main(int argc, char **argv)
 {
 	t_project		*project;
 
-	//atexit(leaks);
 	if (parse_arg(argc, argv) == 1)
 		return (printf("philosopher: Invalid Arguments\n"), 1);
 	project = init_project(argc, argv);
@@ -61,8 +61,5 @@ int	main(int argc, char **argv)
 	join_threads(project);
 	destroy_mutex(project);
 	free_project(project);
-	// free(project->philo);
-	// free(project->thread);
-	// free(project);
 	return (0);
 }

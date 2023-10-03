@@ -3,14 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: javier <javier@student.42.fr>              +#+  +:+       +#+        */
+/*   By: javi <javi@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 18:45:51 by javi              #+#    #+#             */
-/*   Updated: 2023/10/02 18:35:20 by javier           ###   ########.fr       */
+/*   Updated: 2023/10/03 18:27:39 by javi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philosopher.h"
+
+int	ft_isdigit(int c)
+
+{
+	if (c >= 48 && c <= 57)
+	{
+		return (1);
+	}
+	return (0);
+}
 
 long	ft_atoi(const char *str)
 {

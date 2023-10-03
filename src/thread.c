@@ -1,44 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philosopher_exit.c                                 :+:      :+:    :+:   */
+/*   thread.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: javi <javi@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/02 19:29:03 by javier            #+#    #+#             */
-/*   Updated: 2023/10/03 18:29:48 by javi             ###   ########.fr       */
+/*   Created: 2023/10/03 18:29:56 by javi              #+#    #+#             */
+/*   Updated: 2023/10/03 18:30:34 by javi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philosopher.h"
 
-void	join_threads(t_project *project)
+int	thread_create(t_project *project)
 {
-	int	i;
+	int			i;
+	pthread_t	checker;
 
 	i = -1;
+	project->thread = (pthread_t *)malloc(sizeof(pthread_t) \
+	* project->nbr_philo);
+	if (project->thread == NULL)
+		return (1);
 	while (++i < project->nbr_philo)
-		pthread_join(project->thread[i], NULL);
-}
-
-void	destroy_mutex(t_project *project)
-{
-	int	i;
-
-	i = 0;
-	while (i < project->nbr_philo)
 	{
-		pthread_mutex_destroy(&project->philo[i].mute_lock);
-		pthread_mutex_destroy(&project->philo[i].fork_left);
-		i++;
+		if (pthread_create(&project->thread[i], NULL, ft_routine_prueba, \
+			&project->philo[i]) != 0)
+			return (1);
 	}
-	pthread_mutex_destroy(&project->mute_lock);
-	pthread_mutex_destroy(&project->mute_end_lock);
-}
-
-void	free_project(t_project *project)
-{
-	free(project->philo);
-	free(project->thread);
-	free(project);
+	if (pthread_create(&checker, NULL, ft_routine_checker, \
+		(void *)project) != 0)
+		return (1);
+	pthread_join(checker, NULL);
+	return (0);
 }
