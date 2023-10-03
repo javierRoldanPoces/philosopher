@@ -1,10 +1,8 @@
 
 /*
 ./philo 4 0 200 200
-Segmentation fault (core dumped)
 
 ./philo 4 -500 200 200
-Segmentation fault (core dumped)
 
 ./philo 4 214748364732 200 200  debe salir invalid argument, el mio se ejecuta
 
@@ -32,8 +30,28 @@ test-  expected result
 
 ./philo 4 2147483647 200 200 nobody dies
 
-./philo 4 214748364732 200 200 invalid argument
+./philo 4 214748364732 200 200 invalid argument ARREGLAR (No estoy de acuerdo pq el tiempo debe ser tratado como un long)
 
 ./philo 4 200 210 200 a philo dies, death must be displayed before 210 ms
 
+*/
+
+/*
+Hoja de correccón antigua :
+Do not test with more than 200 philosophers.
+Do not test with time_to_die or time_to_eat or time_to_sleep set to values lower than 60 ms.
+
+Test 1 800 200 200. The philosopher should not eat and should die.
+
+Test 5 800 200 200. No philosopher should die.
+
+Test 5 800 200 200 7. No philosopher should die and the simulation should stop when every philosopher has eaten at least 7 times.
+
+Test 4 410 200 200. No philosopher should die.
+
+Test 4 310 200 100. One philosopher should die.
+
+Test with 2 philosophers and check the different times: a death delayed by more than 10 ms is unacceptable.
+
+Test with any values of your choice to verify all the requirements. Ensure philosophers die at the right time, that they don't steal forks, and so forth.
 */
