@@ -6,7 +6,7 @@
 /*   By: javi <javi@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 11:53:07 by javi              #+#    #+#             */
-/*   Updated: 2023/10/03 18:45:42 by javi             ###   ########.fr       */
+/*   Updated: 2023/10/03 19:17:16 by javi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,21 @@
 
 void	ft_take_forks(t_philosopher *philo)
 {
-	if (philo->project->nbr_philo == 1)
-		return ;
+
 	pthread_mutex_lock(&philo->fork_left);
 	printf("%ld ms %d has taken a fork\n", \
 	(long)timestamp(philo->project), philo->id);
+	if (philo->project->nbr_philo == 1)
+	{
+		pthread_mutex_lock(&philo->project->mute_end_lock);
+		usleep(philo->project->time_to_die * 1000);
+		philo->project->flag_dead = 1;
+		pthread_mutex_unlock(&philo->project->mute_end_lock);
+		pthread_mutex_unlock(&philo->fork_left);
+		printf("%ld %d \033[31mdead \033[0m \n", (long)timestamp(philo->project), \
+		philo->id);
+		return ;
+	}
 	pthread_mutex_lock(philo->fork);
 	printf("%ld ms %d has taken a fork left\n", \
 	(long)timestamp(philo->project), philo->id);
